@@ -1,27 +1,30 @@
 # Infonetica - Configurable Workflow Engine
 
-[cite_start]This project is a minimal backend service that implements a configurable workflow engine based on a state-machine concept, as per the take-home exercise specification. [cite: 1] [cite_start]It's built with .NET 8 and ASP.NET Core Minimal APIs. [cite: 26, 27]
+This project is a minimal backend service that implements a configurable workflow engine based on a state-machine concept, as per the take-home exercise specification. It's built with .NET 8 and ASP.NET Core Minimal APIs. 
 
+---
 ## Assumptions & Shortcuts
 
-* [cite_start]**Persistence**: The service uses a simple, thread-safe in-memory store.  Data will be lost upon application restart. This was chosen for simplicity and to meet the 2-hour time constraint.
-* [cite_start]**Validation**: Core validation rules are implemented. [cite: 21, 22] However, more comprehensive validation (e.g., ensuring all `toState` and `fromStates` in actions correspond to actual defined states) would be added in a production environment. This is noted as a `TODO` in the code.
+* **Persistence**: The service uses a simple, thread-safe in-memory store. Data will be lost upon application restart. This was chosen for simplicity and to meet the 2-hour time constraint. 
+* **Validation**: Core validation rules are implemented. However, more comprehensive validation (e.g., ensuring all `toState` and `fromStates` in actions correspond to actual defined states) would be added in a production environment. This is noted as a `TODO` in the code.
 * **IDs**: State and Action IDs are treated as `string`. Workflow Instance IDs are `Guid`.
 * **Error Handling**: Errors are returned as simple JSON objects with a `message` property.
 
+---
 ## How to Run
 
 1.  Ensure you have the .NET 8 SDK installed.
 2.  Clone the repository.
 3.  Navigate to the project directory in your terminal.
-4.  [cite_start]Run the application using the command: `dotnet run`. [cite: 40]
+4.  Run the application using the command: `dotnet run`. 
 5.  The service will be available at `http://localhost:5000` (or a similar port).
 
+---
 ## API Endpoints
 
 ### 1. Create Workflow Definition
 
-Creates a new workflow definition.
+Creates a new workflow definition. 
 
 * **Endpoint**: `POST /definitions`
 * **Request Body**:
@@ -39,8 +42,6 @@ Creates a new workflow definition.
     { "id": "Reject", "fromStates": ["Submitted"], "toState": "Rejected" }
   ]
 }
-```
-
 ### 2. Get Workflow Definition
 
 Retrieves an existing workflow definition by its ID.
